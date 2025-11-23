@@ -380,6 +380,7 @@ python main.py --port 8000 --output-directory "$HOME/comfy-outputs" --disable-mm
 
 * Outputs appear under `~/comfy-outputs/` in your HOME.
 * Default ComfyUI port is 8188, but using `--port 8000` aligns it with Qwen Image Studio.
+* `--fp32-vae`: force all VAE encode/decode operations to run in float32 to avoid bf16/fp16 HIP kernel failures on Strix Halo iGPUs.
 * Remote over SSH:
 
 ```bash
