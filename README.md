@@ -60,12 +60,20 @@ This toolbox provides a ROCm nightly stack for Strix Halo (gfx1151), built from 
 
 ---
 
-## 3. 🚨 Updates — 2025-11-15
+## 3. 🚨 Updates — 2025-11-23
+
+### ✅ Strix Halo Stability Fix (2025-11-22)
+
+* TL;DR: upgrade your host kernel to `6.18-rc6`, rebuild/refresh this toolbox to get stable image/video workflows without HIP errors.
+* AMD merged the gfx1151 kernel + ROCm patches that stop HIP driver crashes on Strix Halo: GFX1151 ships with **1.5× VGPR capacity** versus the rest of GFX11 and now the compiler/runtime know it.
+* Use **kernel `6.18-rc6`** (Fedora OEM repo) which already includes [linux/d15deaf](https://github.com/torvalds/linux/commit/d15deafab5d722afb9e2f83c5edcdef9d9d98bd1) plus the ROCm fix from [ROCm PR #1807](https://github.com/ROCm/rocm-systems/pull/1807).
+* Pair that kernel with **TheRock nightly build `2025-11-22`** (already inside the latest container published by this repo) and the HIP crash cannot be reproduced after multi-day stress tests.
 
 ### ⚡ Torch + AOTriton Wheels
 
 * Shipping the latest **PyTorch ROCm wheels from [TheRock](https://github.com/ROCm/TheRock)**, built with **AOTriton** enabled for Strix Halo (gfx1151).
 * **AOTriton** = *Ahead-Of-Time compiled Triton attention kernels*. They’re prebuilt inside the wheel, so there’s **no runtime JIT**, no extra `triton` package, and no first-run compilation delay.
+
 
 ---
 
